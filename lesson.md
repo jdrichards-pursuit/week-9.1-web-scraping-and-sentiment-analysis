@@ -219,16 +219,45 @@ Now run the program by typing `python main.py` in your terminal.
 
 Take a look in your terminal to see the page source. The page source is the HTML of the page you are scraping.
 
+### Load the Parent Element
+
+Before we scrape the page for our quotes and authors, we are going to load a parent element that contains the quotes and authors using Selenium. This ensures that the data is loaded into the page before we try to scrape it. (this will always depend on the website you are scraping and how it is structured as well as what data you are trying to scrape)
+
+What is the parent element that contains all of the quotes?
+
+We will use selenium to load that element by class name.
+
+Add the following code to the bottom of your `scrape_quotes()` function:
+
+```python
+ try:
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, "col-md-8"))
+        )
+    except Exception as e:
+        print(f"Error waiting for content to load: {e}")
+        driver.quit()
+        return []
+```
+
+This code tells Selenium to wait up to 10 seconds for the element with the class name "col-md-8" to be present in the page. If the element is found within 10 seconds, the code will continue to execute. If the element is not found within 10 seconds, a `Exception` will be raised.
+
+
 #### Add BeautifulSoup to the mix
 
 Now we can use BeautifulSoup to parse the page source and extract the quotes and authors.
 
 Copy and paste the following code into your `main.py` file at the bottom of the `scrape_quotes()` function:
+
 ```python
 soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+quoteDivs = soup.find_all('div', class_='quote')
+
+print(quoteDivs)
 ```
 
-# Understanding the BeautifulSoup Line of Code
+#### Understanding the BeautifulSoup Lines of Code (**DO NOT COPY**)
 
 ```python
 soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -236,25 +265,26 @@ soup = BeautifulSoup(driver.page_source, 'html.parser')
 
 This single line of code does three important things:
 
-## 1. Gets the HTML Content: `driver.page_source`
-- `driver` is your Selenium browser
-- `page_source` captures all the HTML on the current webpage
+- Gets the HTML Content: `driver.page_source`
+  - `driver` is your Selenium browser
+  - `page_source` captures all the HTML on the current webpage
 - Think of it like viewing "View Page Source" in your web browser
 - Includes any content that was loaded or changed by JavaScript
 
-## 2. Specifies the Parser: `'html.parser'`
-- Tells BeautifulSoup how to read the HTML
-- `'html.parser'` is Python's built-in HTML parser
+- Specifies the Parser: `'html.parser'`
+  - Tells BeautifulSoup how to read the HTML
+  - `'html.parser'` is Python's built-in HTML parser
 - It's like giving BeautifulSoup a set of instructions on how to interpret the HTML code
 - Works well for most websites and comes pre-installed with Python
 
-## 3. Creates the Soup Object: `BeautifulSoup()`
-- Takes the raw HTML and turns it into an organized structure
-- Makes the HTML easy to search through and navigate
+- Creates the Soup Object: `BeautifulSoup()`
+  - Takes the raw HTML and turns it into an organized structure
+  - Makes the HTML easy to search through and navigate
 - Creates something like a map of the webpage's content
 - Allows you to easily find and extract specific information later
 
-## Real-World Analogy
+#### Real-World Analogy
+
 Think of it like this:
 - The webpage is like a book
 - `driver.page_source` takes a photo of every page
@@ -264,7 +294,50 @@ Think of it like this:
 
 The end result is a `soup` object that lets you easily find and extract any information you want from the webpage, like finding specific chapters in a well-organized book.
 
+Next line of code:
 
+```python
+quoteDivs = soup.find_all('div', class_='quote')
+```
+
+This line of code finds all of the `div` elements with the class name `quote` and stores them in the `quoteDivs` variable.
+
+#### Testing
+
+Run the program by typing `python main.py` in your terminal.
+
+Notice in the terminal that we have a list of `div` elements with the class name `quote` and all elements nested inside of them.
+
+### 7. Scraping the Quotes and Authors
+
+Our next step is to loop through the `quoteDivs` list and extract the quotes and authors and store them in a list of dictionaries.
+
+Add the following code to the bottom of your `scrape_quotes()` function:
+
+```python
+quotes_and_authors = []
+
+ for quoteDiv in quoteDivs:
+        text = quoteDiv.find('span', class_='text').text
+        author = quoteDiv.find('small', class_='author').text
+       
+        quotes_and_authors.append({
+            'text': text,
+            'author': author,
+        })
+
+    print(quotes_and_authors)
+    return quotes_and_authors
+```
+
+In this code we loop through each `quoteDiv` in the `quoteDivs` list, extract the text and author from each `span` and `small` element, and store them in a dictionary. We then append that dictionary to the `quotes_and_authors` list.
+
+#### Testing
+(make sure to remove other print statements except for the one preceding the return statement)
+
+Run the program by typing `python main.py` in your terminal.
+
+Notice in the terminal that we have a list of dictionaries with the `text` and `author` keys and the values are the quotes and authors we scraped from the page.
 
 ## 6. Declaring `setup_api()` Function
 
