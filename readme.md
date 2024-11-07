@@ -195,12 +195,7 @@ Laws around web scraping are complex and vary by country. In the United States, 
 
 ### What is Sentiment Analysis?
 
-Sentiment Analysis is the process of determining the emotional tone or opinion expressed in text data. When combined with web scraping, it allows you to:
-- Understand customer feelings about products or services
-- Track brand perception over time
-- Monitor social media sentiment
-- Analyze review data at scale
-- Gauge public opinion on topics
+Sentiment analysis, often called opinion mining, is a technique that determines the emotional tone and attitude expressed in text. Think of it as teaching computers to understand human emotions in written words. At its core, sentiment analysis works by breaking down text into smaller pieces (like words or phrases) and evaluating them against pre-existing databases of words with known emotional weights. For example, words like "excellent," "happy," and "wonderful" carry positive sentiment scores, while words like "terrible," "angry," and "disappointed" carry negative ones. However, modern sentiment analysis goes far beyond simple word matching. Advanced systems, especially those powered by large language models like GPT or Gemini, can understand context, sarcasm, and complex emotional nuances. They recognize that a phrase like "this movie was so bad it was good" is actually positive despite containing negative words, or that "the customer service was as helpful as a chocolate teapot" is sarcastic criticism. Sentiment can be calculated on different scales: some systems use simple positive/negative/neutral classifications, while others might score on a continuous scale (like -1 to +1) or detect specific emotions (joy, anger, sadness, etc.). The real power of sentiment analysis comes from its ability to process massive amounts of text data - like thousands of customer reviews or social media posts - and provide actionable insights about how people feel about products, services, or topics.
 
 ### Common Applications with Scraped Data
 - Product reviews analysis
