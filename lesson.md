@@ -147,7 +147,7 @@ def scrape_quotes():
     driver.get(base_url)
 ```
 
-#### `scrape_quotes()` function explanation
+#### `scrape_quotes()` function explanation (**DO NOT COPY**)
 
 ```python
 base_url = "https://quotes.toscrape.com"
@@ -504,7 +504,7 @@ then replace the print statement in the main function with the following:
 save_quotes_to_file(collection_of_author_quotes)
 ```
 
-#### save_quotes_to_file() function explanation
+#### save_quotes_to_file() function explanation (**DO NOT COPY**)
 
 This function will take the `collection_of_author_quotes` dictionary and save it to a file called `quotes.json` in the same directory as your `main.py` file.
 
