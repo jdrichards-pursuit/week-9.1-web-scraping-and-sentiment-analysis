@@ -149,9 +149,9 @@ def scrape_quotes():
 
 #### `scrape_quotes()` function explanation (**DO NOT COPY**)
 
-```python
+`
 base_url = "https://quotes.toscrape.com"
-```
+`
 - Defines the target URL we want to scrape
 - This is a practice website specifically designed for learning web scraping
 
