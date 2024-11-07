@@ -195,76 +195,15 @@ Laws around web scraping are complex and vary by country. In the United States, 
 
 ### What is Sentiment Analysis?
 
-Sentiment analysis, often called opinion mining, is a technique that determines the emotional tone and attitude expressed in text. Think of it as teaching computers to understand human emotions in written words. At its core, sentiment analysis works by breaking down text into smaller pieces (like words or phrases) and evaluating them against pre-existing databases of words with known emotional weights. For example, words like "excellent," "happy," and "wonderful" carry positive sentiment scores, while words like "terrible," "angry," and "disappointed" carry negative ones. However, modern sentiment analysis goes far beyond simple word matching. Advanced systems, especially those powered by large language models like GPT or Gemini, can understand context, sarcasm, and complex emotional nuances. They recognize that a phrase like "this movie was so bad it was good" is actually positive despite containing negative words, or that "the customer service was as helpful as a chocolate teapot" is sarcastic criticism. Sentiment can be calculated on different scales: some systems use simple positive/negative/neutral classifications, while others might score on a continuous scale (like -1 to +1) or detect specific emotions (joy, anger, sadness, etc.). The real power of sentiment analysis comes from its ability to process massive amounts of text data - like thousands of customer reviews or social media posts - and provide actionable insights about how people feel about products, services, or topics.
+Sentiment analysis, often called opinion mining, is a technique that determines the emotional tone and attitude expressed in text. Think of it as teaching computers to understand human emotions in written words. At its core, sentiment analysis works by breaking down text into smaller pieces (like words or phrases) and evaluating them against pre-existing databases of words with known emotional weights. 
 
-### Common Applications with Scraped Data
-- Product reviews analysis
-- Social media monitoring
-- Customer feedback processing
-- Competition analysis
-- Customer support improvement
+For example, words like "excellent," "happy," and "wonderful" carry positive sentiment scores, while words like "terrible," "angry," and "disappointed" carry negative ones. However, modern sentiment analysis goes far beyond simple word matching. 
 
-### Traditional Sentiment Analysis Packages
+Advanced systems, especially those powered by large language models like GPT or Gemini, can understand context, sarcasm, and complex emotional nuances. They recognize that a phrase like "this movie was so bad it was good" is actually positive despite containing negative words, or that "the customer service was as helpful as a chocolate teapot" is sarcastic criticism. 
 
-Before having LLMs, we used popular Python packages for sentiment analysis including:
-- **NLTK**: Natural Language Toolkit
-- **spaCy**: Industrial-strength NLP
-- **TextBlob**: Simple interface for common NLP tasks
+Sentiment can be calculated on different scales: some systems use simple positive/negative/neutral classifications, while others might score on a continuous scale (like -1 to +1) or detect specific emotions (joy, anger, sadness, etc.). 
 
-### Why Use Gemini API Instead of Packages?
-
-#### Advantages of Gemini API
-
-1. **Superior Understanding**
-   - Better grasp of context and nuance
-   - Understands sarcasm and implied meaning
-   - Handles informal language and slang effectively
-   - More accurate with mixed sentiments
-
-2. **Language Capabilities**
-   - Excellent multilingual support
-   - Understands cultural context
-   - Processes various dialects and regional expressions
-   - Handles code-switching naturally
-
-3. **Advanced Features**
-   - Multi-label sentiment classification
-   - Aspect-based sentiment analysis
-   - Emotion detection beyond positive/negative
-   - Confidence scores for predictions
-
-4. **Practical Benefits**
-   - No model training required
-   - Regular updates and improvements
-   - Scalable processing
-   - Consistent results
-
-#### Limitations of Traditional Packages
-
-1. **Limited Context Understanding**
-   - Often miss subtle nuances
-   - Struggle with sarcasm
-   - May misinterpret complex sentences
-   - Limited understanding of context
-
-2. **Binary/Basic Classification**
-   - Usually limited to positive/negative/neutral
-   - Miss nuanced emotional states
-   - Struggle with mixed sentiments
-   - Limited granularity in analysis
-
-3. **Training Requirements**
-   - Need large datasets for custom domains
-   - Require regular model updates
-   - Domain-specific training needed
-   - Resource-intensive
-
-4. **Language Limitations**
-   - Often English-centric
-   - Limited multilingual support
-   - Struggle with informal language
-   - Poor handling of regional variations
-
+The real power of sentiment analysis comes from its ability to process massive amounts of text data - like thousands of customer reviews or social media posts - and provide actionable insights about how people feel about products, services, or topics.
 
 ### Best Practices for Sentiment Analysis
 
