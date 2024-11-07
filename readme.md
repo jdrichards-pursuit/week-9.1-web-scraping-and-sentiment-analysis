@@ -1,5 +1,7 @@
 # Introduction to Web Scraping and Sentiment Analysis
 
+<img src="assets/web-scrape.webp" alt="Web Scraping" width="500">
+
 ## What is Web Scraping?
 
 Web scraping is the automated process of extracting information from websites programmatically. Instead of manually copying and pasting data from web pages, we use specialized programs (scrapers) to automatically collect the data we need. These scrapers can be programmed to visit web pages, locate specific elements, and extract the desired information into a structured format.
