@@ -128,7 +128,7 @@ next_button.click()
    - Large community support
    - Plenty of examples and tutorials
 
-## Ethical Considerations and Best Practices (very important)
+## \*\*Important\*\*: Ethical Considerations and Best Practices
 
 Laws around web scraping are complex and vary by country. In the United States, the [CAN-SPAM Act](https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business) and the [Computer Fraud and Abuse Act (CFAA)](https://en.wikipedia.org/wiki/Computer_Fraud_and_Abuse_Act) are relevant. The CAN-SPAM Act generally allows scraping for legitimate business purposes, provided it complies with the Act's requirements. The CFAA prohibits unauthorized access to a protected computer, but exceptions exist for authorized scraping activities.
 
