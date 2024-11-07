@@ -98,6 +98,27 @@ from selenium.webdriver.common.by import By
     - **`By`**
       - Python class for specifying the type of condition to wait for
 
+
+## Before coding
+
+For any web scraping project, the second thing you should do is take a look at the website you will be scraping. This will give you a good idea of what you are dealing with and what you need to scrape. (The first thing you should do is read the [Terms of Service](https://quotes.toscrape.com/robots.txt) of the website to make sure you are allowed to scrape it.)
+
+ If you go to [quotes.toscrape.com](https://quotes.toscrape.com) in your browser, you will see a list of quotes. Now open your browser's developer tools by pressing `Cmd+Option+I` (Mac).
+
+Take a look at the elements that make up the page. We are interested in the quotes and the authors.
+
+In the **Elements** tab, look for the elements that contain the quotes and the authors in the **HTML** section.
+
+### Questions to answer
+
+- What are the tags of the elements that contain the quotes?
+- What are the classes of the elements that contain the quotes?
+- What are the tags of the elements that contain the authors?
+- What are the classes of the elements that contain the authors?
+- Are the quotes nested inside other elements? If so, what are the tags and classes of those elements?
+
+Keep these tags in mind as we will be using them to scrape the data.
+
 ## Declaring `setup_api()` Function
 
 This time we will create a `setup` function to load our API key from the `.env` file as well as initialize and configure our Gemini model which we will later invoke and store in the `model` variable.
@@ -119,6 +140,7 @@ def setup_api():
 ```
 
 ### `setup_api()` Function Walkthrough
+You've done this before so we don't need to go into as much detail. But you can read this here later if you want.
 
 #### Environment Setup
 - Loads environment variables from `.env` file
@@ -137,3 +159,140 @@ Sets up model parameters:
 Returns a configured instance of `GenerativeModel` using:
 - Model: 'gemini-1.5-flash'
 - Custom configuration settings as defined above
+
+### Create a Driver Instance
+
+The first thing we need to do is create a driver instance. This is the main object that we will use to interact with the browser.
+
+Let's take a look at the code to do this:
+
+Copy and paste the following code into your `main.py` file:
+```python
+def scrape_quotes():
+    baseurl = "https://quotes.toscrape.com"
+    
+    # configure Chrome options and create a driver instance
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(options=options)
+
+    driver.get(url)
+```
+
+# scrape_quotes() function explanation (do not copy and paste this code into your file)
+
+```python
+base_url = "https://quotes.toscrape.com"
+```
+- Defines the target URL we want to scrape
+- This is a practice website specifically designed for learning web scraping
+
+```python
+options = webdriver.ChromeOptions()
+```
+- Creates a new ChromeOptions object
+- This object allows us to customize how Chrome will run
+- Think of it as configuring your browser settings before launching
+
+```python
+options.add_argument('--headless')
+```
+- Enables headless mode
+- Runs Chrome without opening a visible window
+- Saves system resources and is better for automation
+- Essential for server environments without displays
+
+```python
+options.add_argument('--disable-gpu')
+```
+- Disables GPU hardware acceleration
+- Reduces resource usage
+- Important when running in headless mode
+- Particularly useful on Windows systems
+
+```python
+options.add_argument('--no-sandbox')
+```
+- Disables the Chrome sandbox
+- The sandbox is a security feature that isolates browser processes
+- Often necessary when running as root or in Docker containers
+- **Security Note**: Only use in controlled environments
+
+```python
+options.add_argument('--disable-dev-shm-usage')
+```
+- Prevents issues with limited shared memory in some Linux environments
+- dev/shm is a temporary file storage system in Linux
+- Chrome uses this for storing temporary files
+- This flag forces Chrome to use /tmp instead
+
+```python
+driver = webdriver.Chrome(options=options)
+```
+- Creates a new instance of Chrome WebDriver
+- Applies all the options we configured above
+- This is our main interface for controlling the browser
+- The driver will use these settings for all subsequent operations
+
+```python
+driver.get(url)
+```
+- Tells the browser to navigate to our target URL
+- Waits for the page to load before proceeding
+- Similar to typing a URL in your browser and hitting Enter
+- Returns control only after the page has loaded
+
+We can already test this function by adding the following code to the scrape_quotes function:
+```python
+print(driver.page_source)
+```
+and adding the following code to the bottom of our `main.py` file under the def main() function:
+```python
+scrape_quotes()
+```
+
+This will print the page source to the console.
+
+
+
+<!-- ### Common Additional Options
+
+You might also see these useful options in other scripts:
+```python
+# Set a custom user agent
+options.add_argument('--user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"')
+
+# Set window size (even in headless mode)
+options.add_argument('--window-size=1920,1080')
+
+# Disable images for faster loading
+options.add_argument('--blink-settings=imagesEnabled=false')
+
+# Disable JavaScript (use carefully)
+options.add_argument('--disable-javascript')
+```
+
+### Error Handling Best Practices
+
+It's good practice to wrap the driver creation and usage in try-except blocks:
+```python
+try:
+    driver = webdriver.Chrome(options=options)
+    driver.get(url)
+except WebDriverException as e:
+    print(f"Failed to initialize browser: {e}")
+finally:
+    if 'driver' in locals():
+        driver.quit()
+```
+
+### Resource Management
+
+Always remember to close the driver when you're done:
+```python
+# At the end of your script
+driver.quit()
+``` -->
