@@ -51,12 +51,31 @@ pip install -r requirements.txt
 
 The `-r` flag is used to read the requirements from the `requirements.txt` file and install the libraries.
 
+## 4. Before coding
 
-### 4. Importing Required Libraries
+For any web scraping project, the second thing you should do is take a look at the website you will be scraping. This will give you a good idea of what you are dealing with and what you need to scrape. (The first thing you should do is read the [Terms of Service](https://quotes.toscrape.com/robots.txt) of the website to make sure you are allowed to scrape it.)
+
+ If you go to [quotes.toscrape.com](https://quotes.toscrape.com) in your browser, you will see a list of quotes. Now open your browser's developer tools by pressing `Cmd+Option+I` (Mac).
+
+Take a look at the elements that make up the page. We are interested in the quotes and the authors.
+
+In the **Elements** tab, look for the elements that contain the quotes and the authors in the **HTML** section.
+
+### Questions to answer
+
+- What are the tags of the elements that contain the quotes?
+- What are the classes of the elements that contain the quotes?
+- What are the tags of the elements that contain the authors?
+- What are the classes of the elements that contain the authors?
+- Are the quotes nested inside other elements? If so, what are the tags and classes of those elements?
+
+Keep these tags in mind as we will be using them to scrape the data.
+
+### 5. Importing Required Libraries
 
 **Note:** All of the code for this lesson will be copied and pasted by you into the `main.py` file.
 
-Now that you have your API key, you've installed the required libraries and have activated your virtual environment, you can import the required libraries in your `main.py` file.
+Now that you have your API key, you've installed the required libraries and have activated your virtual environment, you can import the required libraries into your `main.py` file.
 
 ```python
 import os
@@ -101,27 +120,7 @@ from selenium.webdriver.common.by import By
       - Python class for specifying the type of condition to wait for
 
 
-## Before coding
-
-For any web scraping project, the second thing you should do is take a look at the website you will be scraping. This will give you a good idea of what you are dealing with and what you need to scrape. (The first thing you should do is read the [Terms of Service](https://quotes.toscrape.com/robots.txt) of the website to make sure you are allowed to scrape it.)
-
- If you go to [quotes.toscrape.com](https://quotes.toscrape.com) in your browser, you will see a list of quotes. Now open your browser's developer tools by pressing `Cmd+Option+I` (Mac).
-
-Take a look at the elements that make up the page. We are interested in the quotes and the authors.
-
-In the **Elements** tab, look for the elements that contain the quotes and the authors in the **HTML** section.
-
-### Questions to answer
-
-- What are the tags of the elements that contain the quotes?
-- What are the classes of the elements that contain the quotes?
-- What are the tags of the elements that contain the authors?
-- What are the classes of the elements that contain the authors?
-- Are the quotes nested inside other elements? If so, what are the tags and classes of those elements?
-
-Keep these tags in mind as we will be using them to scrape the data.
-
-## Declaring `setup_api()` Function
+## 6. Declaring `setup_api()` Function
 
 This time we will create a `setup` function to load our API key from the `.env` file as well as initialize and configure our Gemini model which we will later invoke and store in the `model` variable.
 
@@ -162,13 +161,14 @@ Returns a configured instance of `GenerativeModel` using:
 - Model: 'gemini-1.5-flash'
 - Custom configuration settings as defined above
 
-### Create a Driver Instance
+### 7. Declaring `scrape_quotes()` Function
 
 The first thing we need to do is create a driver instance. This is the main object that we will use to interact with the browser.
 
 Let's take a look at the code to do this:
 
 Copy and paste the following code into your `main.py` file:
+
 ```python
 def scrape_quotes():
     baseurl = "https://quotes.toscrape.com"
@@ -247,7 +247,7 @@ driver.get(url)
 - Similar to typing a URL in your browser and hitting Enter
 - Returns control only after the page has loaded
 
-We can already test this function by adding the following code to the scrape_quotes function:
+We can already test this function and see the page source by adding the following code to the scrape_quotes function:
 ```python
 print(driver.page_source)
 ```
@@ -256,7 +256,7 @@ and adding the following code to the bottom of our `main.py` file under the def 
 scrape_quotes()
 ```
 
-This will print the page source to the console. (The page source is the HTML of the page.)
+The page source is the HTML of the page.
 
 
 
