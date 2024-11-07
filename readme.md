@@ -225,4 +225,4 @@ The real power of sentiment analysis comes from its ability to process massive a
    - Validate results
 
 
-
+[Go to Lesson](lesson.md)
