@@ -254,9 +254,9 @@ This code tells Selenium to wait up to 10 seconds for the element with the class
 The `finally` block ensures that the driver is quit even if an exception is raised. This is important to avoid leaving the browser open and wasting resources.
 
 
-#### Add BeautifulSoup to the mix
+#### Add BeautifulSoup to the scrape_quotes() function
 
-Now we can use BeautifulSoup to parse the page source and extract the quotes and authors.
+Now we can use [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to parse the page source and extract the quotes and authors.
 
 Inside the `try` block after the `WebDriverWait` statement, but before the `except` statement, copy and paste the following code into your `scrape_quotes()` function:
 
