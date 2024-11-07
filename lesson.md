@@ -182,7 +182,7 @@ def scrape_quotes():
     driver.get(url)
 ```
 
-# scrape_quotes() function explanation (do not copy and paste this code into your file)
+# scrape_quotes() function explanation (**Do Not** copy and paste this code into your file)
 
 ```python
 base_url = "https://quotes.toscrape.com"
