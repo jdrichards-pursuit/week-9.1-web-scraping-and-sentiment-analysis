@@ -339,6 +339,8 @@ Run the program by typing `python main.py` in your terminal.
 
 Notice in the terminal that we have a list of dictionaries with the `text` and `author` keys and the values are the quotes and authors we scraped from the page.
 
+
+
 ## 6. Declaring `setup_api()` Function
 
 This time we will create a `setup` function to load our API key from the `.env` file as well as initialize and configure our Gemini model which we will later invoke and store in the `model` variable.
