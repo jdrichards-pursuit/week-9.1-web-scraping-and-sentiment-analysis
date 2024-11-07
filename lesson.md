@@ -254,7 +254,7 @@ and adding the following code to the bottom of our `main.py` file under the def 
 scrape_quotes()
 ```
 
-This will print the page source to the console.
+This will print the page source to the console. (The page source is the HTML of the page.)
 
 
 
