@@ -64,14 +64,14 @@ Next, you should study the website you plan to scrape. Study the tree, the eleme
 
 Take a look at the elements that make up the page. We are interested in the quotes and the authors.
 
-In the **Elements** tab, look for the elements that contain the quotes and the authors in the **HTML** section.
+In the **Elements** tab, look for the elements nested in the **HTML** element that contain the quotes and authors.
 
 ### Questions to answer
 
-- What are the tags of the elements that contain the quotes?
-- What are the classes of the elements that contain the quotes?
-- What are the tags of the elements that contain the authors?
-- What are the classes of the elements that contain the authors?
+- What are the tags that contain the quotes?
+- What are the classes that contain the quotes?
+- What are the tags that contain the authors?
+- What are the classes that contain the authors?
 - Are the quotes nested inside other elements? If so, what are the tags and classes of those elements?
 
 Keep these tags in mind as we will be using them to scrape the data.
