@@ -801,7 +801,7 @@ print(author_sentiments['Albert Einstein'])
 
 The key efficiency of this function comes from building one large, well-structured prompt instead of making multiple API calls. This approach is like shipping one full truck instead of making multiple trips with a partially filled truck - more efficient, cost-effective, and less likely to hit road (rate) limits.
 
-####The Prompt Engineering
+#### The Prompt Engineering
 
 This prompt uses several key techniques:
 - **Clear Instructions**: Tells the model exactly what to analyze
@@ -823,6 +823,7 @@ for author, quotes in author_quotes.items():
         prompt += f"- {quote}\n"
     prompt += "\n"
 `
+
 This loop is crucial for efficiency because:
 - **Batches All Authors**: Instead of making one API call per author, we combine everything into one prompt
 - **Cost Effective**: API services often charge per call, so fewer calls = lower costs
