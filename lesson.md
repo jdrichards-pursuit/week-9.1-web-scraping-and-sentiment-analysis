@@ -801,6 +801,26 @@ print(author_sentiments['Albert Einstein'])
 
 The key efficiency of this function comes from building one large, well-structured prompt instead of making multiple API calls. This approach is like shipping one full truck instead of making multiple trips with a partially filled truck - more efficient, cost-effective, and less likely to hit road (rate) limits.
 
+<details>
+  <summary>View Prompt</summary>
+  prompt = """Analyze the overall sentiment and style for each author based on their quotes.
+
+    For each author provide:
+    * Overall emotional tone of their quotes
+    * Common themes or subjects
+    * Brief explanation of the reasoning
+    * Writing style characteristics
+    * Notable patterns in word choice or structure
+
+    Format your response as:
+    
+    AUTHOR NAME:
+    - Sentiment: [sentiment]
+    - Explanation: [explanation]
+    - Examples: [examples]
+
+    Here are the authors and their quotes:\n\n"""
+</details>
 #### The Prompt Engineering
 
 This prompt uses several key techniques:
