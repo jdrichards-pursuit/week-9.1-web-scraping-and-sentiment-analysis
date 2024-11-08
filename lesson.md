@@ -12,7 +12,7 @@ Learn how to:
 
 ## Setup
 
-**Reminder:** Remember to `setup` and `activate` your virtual environment, choose your python interpreter and install the ipykernel. If you do not remember how please refer to the [Python Workspace Setup Instructions](https://github.com/jdrichards-pursuit/python-virtual-environment-setup).
+**Reminder:** Remember to `setup` and `activate` your virtual environment. If you do not remember how please refer to the [Python Workspace Setup Instructions](https://github.com/jdrichards-pursuit/python-virtual-environment-setup).
 
 **Note:** Because this is `not a Jupyter Notebook`, you will not need to select the Python Interpreter or install the ipykernel.
 
