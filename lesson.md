@@ -68,13 +68,13 @@ In the **Elements** tab, look for the elements nested in the **HTML** element th
 
 ### Questions to answer
 
-- What are the tags that contain the quotes?
-- What are the classes that contain the quotes?
-- What are the tags that contain the authors?
-- What are the classes that contain the authors?
+- What tags contain the quotes?
+- What classes contain the quotes?
+- What tags contain the authors?
+- What classes contain the authors?
 - Are the quotes nested inside other elements? If so, what are the tags and classes of those elements?
 
-Keep these tags in mind as we will be using them to scrape the data.
+Keep these tags and classes in mind as we will be using them to scrape the data.
 
 ### 5. Importing Required Libraries
 
