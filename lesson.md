@@ -157,56 +157,56 @@ base_url = "https://quotes.toscrape.com"
 - Defines the target URL we want to scrape
 - This is a practice website specifically designed for learning web scraping
 
-```python
+`
 options = webdriver.ChromeOptions()
-```
+`
 - Creates a new ChromeOptions object
 - This object allows us to customize how Chrome will run
 - Think of it as configuring your browser settings before launching
 
-```python
+`
 options.add_argument('--headless')
-```
+`
 - Enables headless mode
 - Runs Chrome without opening a visible window
 - Saves system resources and is better for automation
 - Essential for server environments without displays
 
-```python
+`
 options.add_argument('--disable-gpu')
-```
+`
 - Disables GPU hardware acceleration
 - Reduces resource usage
 - Important when running in headless mode
 - Particularly useful on Windows systems
 
-```python
+`
 options.add_argument('--no-sandbox')
-```
+`
 - Disables the Chrome sandbox
 - The sandbox is a security feature that isolates browser processes
 - Often necessary when running as root or in Docker containers
 - **Security Note**: Only use in controlled environments
 
-```python
+`
 options.add_argument('--disable-dev-shm-usage')
-```
+`
 - Prevents issues with limited shared memory in some Linux environments
 - dev/shm is a temporary file storage system in Linux
 - Chrome uses this for storing temporary files
 - This flag forces Chrome to use /tmp instead
 
-```python
+`
 driver = webdriver.Chrome(options=options)
-```
+`
 - Creates a new instance of Chrome WebDriver
 - Applies all the options we configured above
 - This is our main interface for controlling the browser
 - The driver will use these settings for all subsequent operations
 
-```python
+`
 driver.get(url)
-```
+`
 - Tells the browser to navigate to our target URL
 - Waits for the page to load before proceeding
 - Similar to typing a URL in your browser and hitting Enter
