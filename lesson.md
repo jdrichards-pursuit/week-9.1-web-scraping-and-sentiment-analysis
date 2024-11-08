@@ -913,9 +913,9 @@ Notice that we see the sentiments.txt file in the same directory as your `main.p
 
 #### Questions
 
-- notice the formatting of the writing in the sentiments.txt file. What are some ways in which you might improve the formatting?
-- are there other ways in which you might scrape the data to use in different ways?
-- are there other ways in which you might use the Gemini API to analyze the data?
+- Are there ways in which you might improve the formatting in the sentiments.txt file?
+- Are there alternative parts of the data you might analyze?
+- Is the prompt the best way to analyze the data? What might you change?
 
 ### 15. Conclusion
 
