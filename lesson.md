@@ -797,7 +797,7 @@ print(author_sentiments['Albert Einstein'])
 
 #### analyze_author_sentiments() function explanation (**DO NOT COPY**)
 
-# Understanding the Sentiment Analysis Function Structure
+### Understanding the Sentiment Analysis Function Structure
 
 - The Prompt Engineering
 `
