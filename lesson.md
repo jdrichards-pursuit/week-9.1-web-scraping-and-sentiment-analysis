@@ -272,9 +272,9 @@ print(quoteDivs)
 
 #### Understanding the BeautifulSoup Lines of Code (**DO NOT COPY**)
 
-```python
+`
 soup = BeautifulSoup(driver.page_source, 'html.parser')
-```
+`
 
 This single line of code does three important things:
 
@@ -309,9 +309,9 @@ The end result is a `soup` object that lets you easily find and extract any info
 
 **Explanation of the next line of code:**
 
-```python
+`
 quoteDivs = soup.find_all('div', class_='quote')
-```
+`
 
 This line of code finds all of the `div` elements with the class name `quote` and stores them in the `quoteDivs` variable.
 
@@ -366,7 +366,7 @@ Notice that we only have 10 quotes and authors. This is because we are only scra
 
 Next, we are going to loop through multiple pages and scrape the data from each page.
 
-So as not to confuse you, we will remove the scrape_quotes function from the `main.py` file and replace it with a new version that will scrape multiple pages.
+So as not to confuse you, we will remove the scrape_quotes function from the `main.py` file and replace it with a new version that will scrape multiple pages. Copy and replace the existing `scrape_quotes()` function with the following:
 
 ```python
 def scrape_quotes():
@@ -493,7 +493,7 @@ While it is not necessary to save the data to a JSON file, it is a good idea to 
 1. It is easier to work with the data later.
 2. It is easier to load the data into a database.
 
-Add the following function declaration to the function declaration space below the `author_quotes_collection()` function declaration:
+Add the following function declaration to the space below the `author_quotes_collection()` function:
 
 ```python
 def save_quotes_to_file(quotes):
