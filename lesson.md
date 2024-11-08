@@ -802,6 +802,7 @@ print(author_sentiments['Albert Einstein'])
 The key efficiency of this function comes from building one large, well-structured prompt instead of making multiple API calls. This approach is like shipping one full truck instead of making multiple trips with a partially filled truck - more efficient, cost-effective, and less likely to hit road (rate) limits.
 
 - The Prompt Engineering
+
 `
 prompt = """Analyze the overall sentiment and style for each author based on their quotes.
 
@@ -821,6 +822,7 @@ prompt = """Analyze the overall sentiment and style for each author based on the
 
     Here are the authors and their quotes:\n\n"""
 `
+
 This prompt uses several key techniques:
 - **Clear Instructions**: Tells the model exactly what to analyze
 - **Structured Output Format**: Specifies how to format the response
