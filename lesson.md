@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 The `-r` flag is used to read the requirements from the `requirements.txt` file and install the libraries.
 
-### 4. Before coding
+### 4. Study the Website Before Coding
 
 For any web scraping project, the second thing you should do is take a look at the website you will be scraping. This will give you a good idea of what you are dealing with and what you need to scrape. (The first thing you should do is read the [Terms of Service](https://quotes.toscrape.com/robots.txt) of the website to make sure you are allowed to scrape it.)
 
