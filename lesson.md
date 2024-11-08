@@ -56,7 +56,9 @@ The `-r` flag is used to read the requirements from the `requirements.txt` file 
 
 ### 4. Study the Website Before Coding
 
-For any web scraping project, the first thing you should do is take a look at the website you will be scraping. This will give you a good idea of what you are dealing with and what you need to scrape. (The first thing you should do is read the [Terms of Service](https://quotes.toscrape.com/robots.txt) of the website to make sure you are allowed to scrape it.)
+For any web scraping project, the first thing you should do is read the [Terms of Service](https://quotes.toscrape.com/robots.txt) of the website to make sure you are allowed to scrape it.
+
+Next, you should study the website you plan to scrape. Study the tree, the elements, classes, attributes, and any other information that will give you a good idea of what you are dealing with and what you need to scrape. 
 
  If you go to [quotes.toscrape.com](https://quotes.toscrape.com) in your browser, you will see a list of quotes. Now open your browser's developer tools by pressing `Cmd+Option+I` (Mac).
 
