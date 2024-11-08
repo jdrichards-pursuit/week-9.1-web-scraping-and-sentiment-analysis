@@ -565,7 +565,7 @@ Notice that we see the quotes.json file in the same directory as your `main.py` 
 
 Notice that the text contains some unicode characters that we need to clean up. We can do this by creating a `clean_text()` function.
 
-Add the following function declaration to the function declaration space below the `save_quotes_to_file()` function declaration:
+Add the following function declaration to the space below the `save_quotes_to_file()` function:
 
 ```python
 def clean_text(text):
@@ -580,33 +580,33 @@ def clean_text(text):
 
 #### clean_text() function explanation (**DO NOT COPY**)
 
-```python
+`
 import unicodedata
-```
+`
 - Imports Python's built-in module for Unicode operations
 - Provides tools for working with Unicode characters
 - No installation needed as it's part of Python's standard library
 
-```python
+`
     if not text:
         return ""
-```
+`
 - Safety check for empty or None input
 - If text is empty, None, or False, returns an empty string
 - Prevents errors when processing empty text
 
-```python
+`
     normalized = unicodedata.normalize('NFKD', text)
-```
+`
 - Takes the input text and applies [NFKD normalization](https://docs.python.org/3/library/unicodedata.html#unicodedata.normalize)
 - 'NFKD' tells Python to:
   1. Break down special characters into their base form (K - compatibility)
   2. Separate base characters from their accent marks (D - decomposed)
 - For example: 'é' becomes 'e' + '´' (base letter + accent mark)
 
-```python
+`
     ascii_text = normalized.encode('ascii', 'ignore').decode('ascii')
-```
+`
 This complex line does three things:
 1. `encode('ascii', 'ignore')`
    - Converts the string to ASCII bytes
@@ -617,24 +617,24 @@ This complex line does three things:
    - Converts the ASCII bytes back into a string
    - Now we have a clean ASCII string
 
-```python
+`
     cleaned_text = ' '.join(ascii_text.split())
-```
+`
 - `split()` breaks the text into words (splits on any whitespace)
 - `join()` puts it back together with single spaces
 - Removes extra whitespace, tabs, and newlines
 - Normalizes all spacing between words
 
-```python
+`
     return cleaned_text
-```
+`
 - Returns the final cleaned text
 - All special characters have been normalized
 - All extra whitespace has been removed
 
 #### Adjust the scrape_quotes() function for loop
 
-Replace the `for quoteDiv in quoteDivs:` loop with the following:
+Replace these two lines in the `for quoteDiv in quoteDivs:` loop with the following:
 
 ```python
         text = clean_text(quoteDiv.find('span', class_='text').text)
@@ -683,35 +683,35 @@ model = setup_api()
 
 #### `setup_api()` Function explanation (**DO NOT COPY**)
 
-```python
+`
 load_dotenv()
-```
+`
 - Loads environment variables from a `.env` file into the program
 - This is a security best practice to keep sensitive data like API keys out of the code
 - Looks for a file named `.env` in your project directory
 
-```python
+`
 api_key = os.getenv('API_KEY')
-```
+`
 - Gets the API key from environment variables
 - `os.getenv()` looks for a variable named 'API_KEY' in the environment
 - If not found, returns None instead of raising an error
 
-```python
+`
 genai.configure(api_key=api_key)
-```
+`
 - Configures the Google Generative AI library with your API key
 - This is required before you can create any model instances
 - Sets up the authentication for all future API calls
 
-```python
+`
 model_config = {
     "temperature": 0.2,
     "top_p": 0.95,
     "top_k": 40,
     "max_output_tokens": 4096,
 }
-```
+`
 Creates a dictionary with model parameters:
 - `temperature`: 0.2
   - Controls randomness in responses
@@ -733,9 +733,9 @@ Creates a dictionary with model parameters:
   - 4096 tokens is approximately 3000-4000 words
   - Prevents overly long responses
 
-```python
+`
 return genai.GenerativeModel('gemini-1.5-flash', generation_config=model_config)
-```
+`
 - Creates and returns a new Gemini model instance
 - Uses the 'gemini-1.5-flash' model variant (optimized for speed)
 - Applies all the configuration settings we defined
@@ -743,12 +743,49 @@ return genai.GenerativeModel('gemini-1.5-flash', generation_config=model_config)
 
 ### 13. Analyzing the Author's Quotes using the Gemini API
 
-We are going to create a function called `analyze_author_quotes()` that will take the `collection_of_author_quotes` dictionary and analyze the quotes for each author and return a list of dictionaries with the author and the analysis.
+We are going to create a function called `analyze_author_sentiments()` that will take the `collection_of_author_quotes` dictionary and analyze the quotes for each author and return a list of dictionaries with the author and the analysis.
 
 Add the following function declaration to the function declaration space below the `setup_api()` function declaration:
 
 ```python
+def analyze_author_sentiments(author_quotes, model):
+   
+    # Build prompt with all authors and quotes
+    prompt = """Analyze the overall sentiment and style for each author based on their quotes.
 
+    For each author provide:
+    * Overall emotional tone of their quotes
+    * Common themes or subjects
+    * Brief explanation of the reasoning
+    * Writing style characteristics
+    * Notable patterns in word choice or structure
+
+    Format your response as:
+    
+    AUTHOR NAME:
+    - Sentiment: [sentiment]
+    - Explanation: [explanation]
+    - Examples: [examples]
+
+    Here are the authors and their quotes:\n\n"""
+    
+    # Add each author's quotes to prompt
+    for author, quotes in author_quotes.items():
+        prompt += f"{author}:\n"
+        for quote in quotes:
+            prompt += f"- {quote}\n"
+        prompt += "\n"
+
+    try:
+        # Make single API call
+        response = model.generate_content(prompt)
+        
+        # Return raw response text - no processing needed
+        return response.text
+        
+    except Exception as e:
+        print(f"Error in sentiment analysis: {e}")
+        return ""
 ```
 
 Also, in your main function replace the print statement with the following:
