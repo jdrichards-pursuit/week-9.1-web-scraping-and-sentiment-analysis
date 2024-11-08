@@ -800,7 +800,7 @@ print(author_sentiments['Albert Einstein'])
 # Understanding the Sentiment Analysis Function Structure
 
 - The Prompt Engineering
-```python
+`
 prompt = """Analyze the overall sentiment and style for each author based on their quotes.
 
     For each author provide:
@@ -818,7 +818,7 @@ prompt = """Analyze the overall sentiment and style for each author based on the
     - Examples: [examples]
 
     Here are the authors and their quotes:\n\n"""
-```
+`
 This prompt uses several key techniques:
 - **Clear Instructions**: Tells the model exactly what to analyze
 - **Structured Output Format**: Specifies how to format the response
@@ -831,13 +831,13 @@ This prompt uses several key techniques:
   4. Finally indicates where the data will be
 
 - Building One Large Prompt (Batch Processing)
-```python
+`
 for author, quotes in author_quotes.items():
     prompt += f"{author}:\n"
     for quote in quotes:
         prompt += f"- {quote}\n"
     prompt += "\n"
-```
+`
 This loop is crucial for efficiency because:
 - **Batches All Authors**: Instead of making one API call per author, we combine everything into one prompt
 - **Cost Effective**: API services often charge per call, so fewer calls = lower costs
@@ -847,22 +847,22 @@ This loop is crucial for efficiency because:
     - Batched call: One instant call, no rate limit issues
 
 - Getting and Returning the Raw Response
-```python
+`
     try:
         response = model.generate_content(prompt)
         return response.text
-```
+`
 - Makes single API call with complete prompt
 - Returns unprocessed text exactly as received
 - Preserves formatting and structure from API response
 - Simple and maintainable approach
 
 - Error Handling
-```python
+`
     except Exception as e:
         print(f"Error in sentiment analysis: {e}")
         return ""
-```
+`
 - Catches any API call issues
 - Provides clear error message
 - Returns empty string instead of crashing
