@@ -801,27 +801,7 @@ print(author_sentiments['Albert Einstein'])
 
 The key efficiency of this function comes from building one large, well-structured prompt instead of making multiple API calls. This approach is like shipping one full truck instead of making multiple trips with a partially filled truck - more efficient, cost-effective, and less likely to hit road (rate) limits.
 
-- The Prompt Engineering
-
-`
-prompt = """Analyze the overall sentiment and style for each author based on their quotes.
-
-    For each author provide:
-    * Overall emotional tone of their quotes
-    * Common themes or subjects
-    * Brief explanation of the reasoning
-    * Writing style characteristics
-    * Notable patterns in word choice or structure
-
-    Format your response as:
-    
-    AUTHOR NAME:
-    - Sentiment: [sentiment]
-    - Explanation: [explanation]
-    - Examples: [examples]
-
-    Here are the authors and their quotes:\n\n"""
-`
+####The Prompt Engineering
 
 This prompt uses several key techniques:
 - **Clear Instructions**: Tells the model exactly what to analyze
@@ -834,7 +814,8 @@ This prompt uses several key techniques:
   3. Then shows how to format it
   4. Finally indicates where the data will be
 
-- Building One Large Prompt (Batch Processing)
+#### Building One Large Prompt (Batch Processing)
+
 `
 for author, quotes in author_quotes.items():
     prompt += f"{author}:\n"
@@ -850,7 +831,7 @@ This loop is crucial for efficiency because:
     - Individual calls: Would take 2+ minutes and might hit rate limits
     - Batched call: One instant call, no rate limit issues
 
-- Getting and Returning the Raw Response
+#### Getting and Returning the Raw Response
 `
     try:
         response = model.generate_content(prompt)
@@ -861,7 +842,7 @@ This loop is crucial for efficiency because:
 - Preserves formatting and structure from API response
 - Simple and maintainable approach
 
-- Error Handling
+#### Error Handling
 `
     except Exception as e:
         print(f"Error in sentiment analysis: {e}")
