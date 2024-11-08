@@ -805,7 +805,7 @@ The key efficiency of this function comes from building one large, well-structur
 
 <details>
   <summary>View Prompt</summary>
-  `
+  
   Analyze the overall sentiment and style for each author based on their quotes.
 
     For each author provide:
@@ -823,7 +823,7 @@ The key efficiency of this function comes from building one large, well-structur
     - Examples: [examples]
 
     Here are the authors and their quotes:\n\n
-`
+
 </details>
 
 This prompt uses several key techniques:
