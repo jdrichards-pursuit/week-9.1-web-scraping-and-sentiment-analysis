@@ -500,7 +500,7 @@ def save_quotes_to_file(quotes):
     with open('quotes.json', 'w') as file:
         json.dump(quotes, file, indent=4)
 ```
-then replace the print statement in the main function with the following:
+Replace the print statement in the `main()` function with the following:
 
 ```python
 save_quotes_to_file(collection_of_author_quotes)
@@ -511,24 +511,24 @@ save_quotes_to_file(collection_of_author_quotes)
 This function will take the `collection_of_author_quotes` dictionary and save it to a file called `quotes.json` in the same directory as your `main.py` file.
 
 
-```python
+`
 with open('quotes.json', 'w') as file:
-```
+`
 - `with` is a context manager that automatically closes the file when done
 - `open()` creates or opens a file named 'quotes.json'
 - `'w'` means write mode (will overwrite if file exists)
 - `as file` creates a variable name `file` to reference the opened file
 
-```python
+`
     json.dump(quotes, file, indent=4)
-```
+`
 - `json.dump()` writes Python data to a JSON file using the python dictionary json that we imported.
 - `quotes` is the data to write (your list of dictionaries)
 - `file` is where to write it (the opened JSON file)
 - `indent=4` makes the JSON file human-readable with nice formatting
 
 #### What the Output Looks Like
-```json
+`
 {
     "author": "Albert Einstein",
     "quotes": [
@@ -536,7 +536,7 @@ with open('quotes.json', 'w') as file:
         "Imagination is more important than knowledge."
     ]
 }
-```
+`
 
 #### Why Each Part Matters
 1. The `with` statement:
