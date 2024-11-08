@@ -799,6 +799,8 @@ print(author_sentiments['Albert Einstein'])
 
 ### Understanding the Sentiment Analysis Function Structure
 
+The key efficiency of this function comes from building one large, well-structured prompt instead of making multiple API calls. This approach is like shipping one full truck instead of making multiple trips with a partially filled truck - more efficient, cost-effective, and less likely to hit road (rate) limits.
+
 - The Prompt Engineering
 `
 prompt = """Analyze the overall sentiment and style for each author based on their quotes.
@@ -868,7 +870,7 @@ This loop is crucial for efficiency because:
 - Returns empty string instead of crashing
 - Allows calling code to handle failures gracefully
 
-The key efficiency of this function comes from building one large, well-structured prompt instead of making multiple API calls. This approach is like shipping one full truck instead of making multiple trips with a partially filled truck - more efficient, cost-effective, and less likely to hit road (rate) limits.
+
 
 
 #### Testing
